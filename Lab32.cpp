@@ -21,6 +21,16 @@ void printQueue(const deque<Car>& toll) {
 
 int main() {
 
+    srand(static_cast<unsigned>(time(0))); 
+
+    deque<Car> toll; 
+
+    for (int i = 0; i < INITIAL_DEQUE_SIZE; ++i) {
+
+        toll.push_back(Car()); 
+
+    }
+
 
   return 0; 
 
