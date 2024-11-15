@@ -7,3 +7,21 @@ using namespace std;
 const int INITIAL_DEQUE_SIZE = 2; 
 
 void printQueue(const deque<Car>& toll); 
+
+void printQueue(const deque<Car>& toll) {
+
+    for (const auto& car : toll) {
+
+        car.print(); 
+
+        cout << "\t"; 
+    }
+
+}
+
+int main() {
+
+
+  return 0; 
+
+}
