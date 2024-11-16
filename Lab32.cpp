@@ -47,8 +47,11 @@ int main() {
 
         if (operate <= PAY && !toll.empty()) {
 
-            cout << "\nTime"; 
+            cout << "\nTime: " << t << "Operation: Car paid: \n";
 
+            toll.front().print(); 
+
+            toll.pop_front(); 
         }
 
     }
