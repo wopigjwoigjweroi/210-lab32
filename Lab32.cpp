@@ -29,8 +29,15 @@ int main() {
 
         toll.push_back(Car()); 
 
-    }
+    } 
+    
+    cout << "Initial Queue\n"; 
 
+    printQueue(toll); 
+
+    int t = 0;
+
+    
 
   return 0; 
 
