@@ -15,8 +15,6 @@ void printQueue(const deque<Car>& toll) {
     for (const auto& car : toll) {
 
         car.print(); 
-
-        cout << "\t"; 
     }
 
 }
@@ -47,7 +45,7 @@ int main() {
 
         if (operate <= PAY && !toll.empty()) {
 
-            cout << "\nTime: " << t << "Operation: Car paid: \n";
+            cout << "\nTime: " << t << " Operation: Car paid: \n";
 
             toll.front().print(); 
 
@@ -56,7 +54,7 @@ int main() {
 
             Car car; 
 
-            cout << "\nTime: " << t << "Operation: Joined lane: \n"; 
+            cout << "\nTime: " << t << " Operation: Joined lane: \n"; 
 
             car.print(); 
 
