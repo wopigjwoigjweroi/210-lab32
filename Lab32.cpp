@@ -6,7 +6,7 @@ using namespace std;
 
 const int INITIAL_DEQUE_SIZE = 2; 
 
-const int PAY = -0; 
+const int PAY = 55; 
 
 void printQueue(const deque<Car>& toll); 
 
@@ -52,7 +52,21 @@ int main() {
             toll.front().print(); 
 
             toll.pop_front(); 
+        } else {
+
+            Car car; 
+
+            cout << "\nTime: " << t << "Operation: Joined lane: \n"; 
+
+            car.print(); 
+
+            toll.push_back(car); 
+
         }
+
+         cout << "Queue:\n"; 
+
+         printQueue(toll); 
 
     }
     
