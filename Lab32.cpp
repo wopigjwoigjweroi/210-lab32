@@ -6,6 +6,8 @@ using namespace std;
 
 const int INITIAL_DEQUE_SIZE = 2; 
 
+const int PAY = -0; 
+
 void printQueue(const deque<Car>& toll); 
 
 void printQueue(const deque<Car>& toll) {
@@ -37,6 +39,19 @@ int main() {
 
     int t = 0;
 
+    while (!toll.empty()) {
+
+        ++t; 
+
+        int operate = rand() % 100 + 1;
+
+        if (operate <= PAY && !toll.empty()) {
+
+            cout << "\nTime"; 
+
+        }
+
+    }
     
 
   return 0; 
