@@ -8,7 +8,11 @@ using namespace std;
 
 const int INITIAL_DEQUE_SIZE = 2; 
 
-const int PAY = 55; 
+const int PAY_PROBABILITY = 46;
+
+const int CAR_JOIN_PROBABILITy = 39; 
+
+const int CAR_SHIFT_PROBABILITY = 15; 
 
 void printQueue(const deque<Car>& lane, int laneNum); 
 
