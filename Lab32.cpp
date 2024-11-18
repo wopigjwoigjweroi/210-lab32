@@ -6,7 +6,9 @@
 
 using namespace std; 
 
-const int INITIAL_DEQUE_SIZE = 2; 
+// const int INITIAL_DEQUE_SIZE = 2;
+
+const int LANE_SIZE = 4; 
 
 const int PAY_PROBABILITY = 46;
 
@@ -15,6 +17,7 @@ const int CAR_JOIN_PROBABILITY = 39;
 const int CAR_SHIFT_PROBABILITY = 15; 
 
 void printLane(const deque<Car>& lane, int laneNum); 
+void displayLanes(const array<deque<Car>, LANE_SIZE>& lanes); 
 
 void printLane(const deque<Car>& lane, int laneNum) {
 
@@ -23,6 +26,14 @@ void printLane(const deque<Car>& lane, int laneNum) {
     for (const auto& car : lane) {
 
         car.print(); 
+    }
+}
+
+void displayLanes(const array<deque<Car>, LANE_SIZE>& lanes) {
+
+    for (int i = 0; i < LANE_SIZE; ++i) {
+
+        printLane(lanes[i], i); 
     }
 }
 
