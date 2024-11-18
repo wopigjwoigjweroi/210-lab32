@@ -2,73 +2,108 @@
 #include <iostream> 
 #include <deque> 
 #include "Car.h" 
+#include <array> 
 
 using namespace std; 
 
-const int INITIAL_DEQUE_SIZE = 2; 
+const int INITIAL_DEQUE_SIZE = 2;
+const int LANE_SIZE = 4; 
+const int PAY_PROBABILITY = 46;
+const int CAR_JOIN_PROBABILITY = 39; 
+const int CAR_SHIFT_PROBABILITY = 15; 
+const int PERIODS = 20; 
 
-const int PAY = 55; 
+void printLane(const deque<Car>& lane, int laneNum); 
+void displayLanes(const array<deque<Car>, LANE_SIZE>& lanes); 
 
-void printQueue(const deque<Car>& toll); 
+void printLane(const deque<Car>& lane, int laneNum) {
 
-void printQueue(const deque<Car>& toll) {
-
-    for (const auto& car : toll) {
+    cout << "Lane: " << laneNum + 1 << " Queue\n"; 
+    
+    for (const auto& car : lane) {
 
         car.print(); 
     }
+}
 
+void displayLanes(const array<deque<Car>, LANE_SIZE>& lanes) {
+
+    for (int i = 0; i < LANE_SIZE; ++i) {
+
+        printLane(lanes[i], i); 
+    }
 }
 
 int main() {
 
     srand(static_cast<unsigned>(time(0))); 
 
-    deque<Car> toll; 
+    array<deque<Car>, LANE_SIZE> lanes; 
 
-    for (int i = 0; i < INITIAL_DEQUE_SIZE; ++i) {
+    for (auto& lane : lanes) {
 
-        toll.push_back(Car()); 
+        int initial = rand() % INITIAL_DEQUE_SIZE + 1; 
 
-    } 
+            for (int i = 0; i < initial; ++i) {
+
+                lane.push_back(Car()); 
+            }
+    }
     
     cout << "Initial Queue\n"; 
 
-    printQueue(toll); 
+    displayLanes(lanes); 
 
-    int t = 0;
+    for (int i = 0; i <= PERIODS; ++i) {
 
-    while (!toll.empty()) {
+        cout << "Time: " << i << endl; 
 
-        ++t; 
+        for (int index = 0; index < LANE_SIZE; ++index) {
 
-        int operate = rand() % 100 + 1;
+            int operate = rand() % 100 + 1; 
 
-        if (operate <= PAY && !toll.empty()) {
+            if (!lanes[index].empty() && operate <= PAY_PROBABILITY) {
 
-            cout << "\nTime: " << t << " Operation: Car paid: \n";
+                cout << "Lanes: " << index + 1 << " Paid: ";
 
-            toll.front().print(); 
+                lanes[index].front().print(); 
+                lanes[index].pop_front(); 
+                
+            } else if (operate <= PAY_PROBABILITY + CAR_JOIN_PROBABILITY) {
 
-            toll.pop_front(); 
-        } else {
+                Car newCar; 
 
-            Car car; 
+                cout << "Lane: " << index + 1 << " Joined: ";
 
-            cout << "\nTime: " << t << " Operation: Joined lane: \n"; 
+                newCar.print(); 
 
-            car.print(); 
+                lanes[index].push_back(newCar); 
+                
+            } else if (!lanes[index].empty() && operate > PAY_PROBABILITY + CAR_JOIN_PROBABILITY) {
 
-            toll.push_back(car); 
+                int targetIndex = rand() % LANE_SIZE; 
 
+                while (targetIndex == index) {
+
+                    targetIndex = rand() % LANE_SIZE; 
+                }
+                
+                Car carSwitch = lanes[index].back(); 
+
+                lanes[index].pop_back(); 
+
+                lanes[targetIndex].push_back(carSwitch); 
+
+                cout << "Lane: " << index + 1 << " Switched: "; 
+
+                carSwitch.print(); 
+
+                cout << " To lane: " << targetIndex + 1 << endl; 
+            }
         }
-
-         cout << "Queue:\n"; 
-
-         printQueue(toll); 
-
+        
+        displayLanes(lanes); 
     }
-    
 
   return 0; 
 
