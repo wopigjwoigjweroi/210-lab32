@@ -63,6 +63,20 @@ int main() {
 
         cout << "Time: " << i << endl; 
 
+
+        for (int index = 0; index < LANE_SIZE; ++index) {
+
+            int operate = rand() % 100 + 1; 
+
+            if (!lanes[index].empty() && operate <= PAY_PROBABILITY) {
+
+                cout << "Lanes: " << index + 1 << " Paid: ";
+
+                lanes[index].front().print(); 
+                lanes[index].pop_front(); 
+            }
+        }
+
     }
 
     // int t = 0;
