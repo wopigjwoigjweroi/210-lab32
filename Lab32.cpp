@@ -96,8 +96,18 @@ int main() {
 
                 lanes[index].pop_back(); 
 
+                lanes[targetIndex].push_back(carSwitch); 
+
+                cout << "Lane: " << index + 1 << " Switched: "; 
+
+                carSwitch.print(); 
+
+                cout << " To lane: " << targetIndex + 1 << endl; 
+
             }
         }
+
+        displayLanes(lanes); 
 
     }
 
