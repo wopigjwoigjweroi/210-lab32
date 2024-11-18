@@ -2,6 +2,7 @@
 #include <iostream> 
 #include <deque> 
 #include "Car.h" 
+#include <array> 
 
 using namespace std; 
 
@@ -9,15 +10,16 @@ const int INITIAL_DEQUE_SIZE = 2;
 
 const int PAY = 55; 
 
-void printQueue(const deque<Car>& toll); 
+void printQueue(const deque<Car>& lane, int laneNum); 
 
-void printQueue(const deque<Car>& toll) {
+void printQueue(const deque<Car>& lane, int laneNum) {
 
-    for (const auto& car : toll) {
+    cout << "Lane: " << laneNum + 1 << " Queue\n"; 
+    
+    for (const auto& car : lane) {
 
         car.print(); 
     }
-
 }
 
 int main() {
