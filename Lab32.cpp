@@ -7,15 +7,10 @@
 using namespace std; 
 
 const int INITIAL_DEQUE_SIZE = 2;
-
 const int LANE_SIZE = 4; 
-
 const int PAY_PROBABILITY = 46;
-
 const int CAR_JOIN_PROBABILITY = 39; 
-
 const int CAR_SHIFT_PROBABILITY = 15; 
-
 const int PERIODS = 20; 
 
 void printLane(const deque<Car>& lane, int laneNum); 
@@ -63,7 +58,6 @@ int main() {
 
         cout << "Time: " << i << endl; 
 
-
         for (int index = 0; index < LANE_SIZE; ++index) {
 
             int operate = rand() % 100 + 1; 
@@ -74,6 +68,7 @@ int main() {
 
                 lanes[index].front().print(); 
                 lanes[index].pop_front(); 
+                
             } else if (operate <= PAY_PROBABILITY + CAR_JOIN_PROBABILITY) {
 
                 Car newCar; 
@@ -83,6 +78,7 @@ int main() {
                 newCar.print(); 
 
                 lanes[index].push_back(newCar); 
+                
             } else if (!lanes[index].empty() && operate > PAY_PROBABILITY + CAR_JOIN_PROBABILITY) {
 
                 int targetIndex = rand() % LANE_SIZE; 
@@ -91,7 +87,7 @@ int main() {
 
                     targetIndex = rand() % LANE_SIZE; 
                 }
-
+                
                 Car carSwitch = lanes[index].back(); 
 
                 lanes[index].pop_back(); 
@@ -103,50 +99,11 @@ int main() {
                 carSwitch.print(); 
 
                 cout << " To lane: " << targetIndex + 1 << endl; 
-
             }
         }
-
+        
         displayLanes(lanes); 
-
     }
-
-    // int t = 0;
-
-
-    
-
-    // while (!toll.empty()) {
-
-    //     ++t; 
-
-    //     int operate = rand() % 100 + 1;
-
-    //     if (operate <= PAY && !toll.empty()) {
-
-    //         cout << "\nTime: " << t << " Operation: Car paid: \n";
-
-    //         toll.front().print(); 
-
-    //         toll.pop_front(); 
-    //     } else {
-
-    //         Car car; 
-
-    //         cout << "\nTime: " << t << " Operation: Joined lane: \n"; 
-
-    //         car.print(); 
-
-    //         toll.push_back(car); 
-
-    //     }
-
-    //      cout << "Queue:\n"; 
-
-    //      // printQueue(toll); 
-
-    // }
-    
 
   return 0; 
 
