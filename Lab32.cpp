@@ -74,6 +74,28 @@ int main() {
 
                 lanes[index].front().print(); 
                 lanes[index].pop_front(); 
+            } else if (operate <= PAY_PROBABILITY + CAR_JOIN_PROBABILITY) {
+
+                Car newCar; 
+
+                cout << "Lane: " << index + 1 << " Joined: ";
+
+                newCar.print(); 
+
+                lanes[index].push_back(newCar); 
+            } else if (!lanes[index].empty() && operate > PAY_PROBABILITY + CAR_JOIN_PROBABILITY) {
+
+                int targetIndex = rand() % LANE_SIZE; 
+
+                while (targetIndex == index) {
+
+                    targetIndex = rand() % LANE_SIZE; 
+                }
+
+                Car carSwitch = lanes[index].back(); 
+
+                lanes[index].pop_back(); 
+
             }
         }
 
