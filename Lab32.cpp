@@ -6,7 +6,7 @@
 
 using namespace std; 
 
-// const int INITIAL_DEQUE_SIZE = 2;
+const int INITIAL_DEQUE_SIZE = 2;
 
 const int LANE_SIZE = 4; 
 
@@ -41,13 +41,17 @@ int main() {
 
     srand(static_cast<unsigned>(time(0))); 
 
-    // deque<Car> toll; 
+    array<deque<Car>, LANE_SIZE> lanes; 
 
-    for (int i = 0; i < INITIAL_DEQUE_SIZE; ++i) {
+    for (auto& lane : lanes) {
 
-        toll.push_back(Car()); 
+        int initial = rand() % INITIAL_DEQUE_SIZE + 1; 
 
-    } 
+            for (int i = 0; i < initial; ++i) {
+
+                lane.push_back(Car()); 
+            }
+    }
     
     cout << "Initial Queue\n"; 
 
