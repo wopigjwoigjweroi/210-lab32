@@ -16,6 +16,8 @@ const int CAR_JOIN_PROBABILITY = 39;
 
 const int CAR_SHIFT_PROBABILITY = 15; 
 
+const int PERIODS = 20; 
+
 void printLane(const deque<Car>& lane, int laneNum); 
 void displayLanes(const array<deque<Car>, LANE_SIZE>& lanes); 
 
@@ -55,40 +57,49 @@ int main() {
     
     cout << "Initial Queue\n"; 
 
-    // printLane(toll); 
+    displayLanes(lanes); 
 
-    int t = 0;
+    for (int i = 0; i <= PERIODS; ++i) {
 
-    while (!toll.empty()) {
-
-        ++t; 
-
-        int operate = rand() % 100 + 1;
-
-        if (operate <= PAY && !toll.empty()) {
-
-            cout << "\nTime: " << t << " Operation: Car paid: \n";
-
-            toll.front().print(); 
-
-            toll.pop_front(); 
-        } else {
-
-            Car car; 
-
-            cout << "\nTime: " << t << " Operation: Joined lane: \n"; 
-
-            car.print(); 
-
-            toll.push_back(car); 
-
-        }
-
-         cout << "Queue:\n"; 
-
-         // printQueue(toll); 
+        cout << "Time: " << i << endl; 
 
     }
+
+    // int t = 0;
+
+
+    
+
+    // while (!toll.empty()) {
+
+    //     ++t; 
+
+    //     int operate = rand() % 100 + 1;
+
+    //     if (operate <= PAY && !toll.empty()) {
+
+    //         cout << "\nTime: " << t << " Operation: Car paid: \n";
+
+    //         toll.front().print(); 
+
+    //         toll.pop_front(); 
+    //     } else {
+
+    //         Car car; 
+
+    //         cout << "\nTime: " << t << " Operation: Joined lane: \n"; 
+
+    //         car.print(); 
+
+    //         toll.push_back(car); 
+
+    //     }
+
+    //      cout << "Queue:\n"; 
+
+    //      // printQueue(toll); 
+
+    // }
     
 
   return 0; 
