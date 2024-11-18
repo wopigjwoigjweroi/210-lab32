@@ -10,13 +10,13 @@ const int INITIAL_DEQUE_SIZE = 2;
 
 const int PAY_PROBABILITY = 46;
 
-const int CAR_JOIN_PROBABILITy = 39; 
+const int CAR_JOIN_PROBABILITY = 39; 
 
 const int CAR_SHIFT_PROBABILITY = 15; 
 
-void printQueue(const deque<Car>& lane, int laneNum); 
+void printLane(const deque<Car>& lane, int laneNum); 
 
-void printQueue(const deque<Car>& lane, int laneNum) {
+void printLane(const deque<Car>& lane, int laneNum) {
 
     cout << "Lane: " << laneNum + 1 << " Queue\n"; 
     
@@ -30,7 +30,7 @@ int main() {
 
     srand(static_cast<unsigned>(time(0))); 
 
-    deque<Car> toll; 
+    // deque<Car> toll; 
 
     for (int i = 0; i < INITIAL_DEQUE_SIZE; ++i) {
 
@@ -40,7 +40,7 @@ int main() {
     
     cout << "Initial Queue\n"; 
 
-    printQueue(toll); 
+    // printLane(toll); 
 
     int t = 0;
 
@@ -71,7 +71,7 @@ int main() {
 
          cout << "Queue:\n"; 
 
-         printQueue(toll); 
+         // printQueue(toll); 
 
     }
     
